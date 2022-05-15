@@ -20,7 +20,7 @@ jobs:
         with:
             platforms: 'linux/amd64, darwin/amd64, windows/amd64'
             name: 'ado-pr'
-            compress: 'true'
+            compress: 'false'
             dest: 'dist'
 
       - name: Upload build artifacts
