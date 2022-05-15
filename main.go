@@ -13,8 +13,8 @@ import (
 
 func prCommands() []*cli.Command {
 	//hacky way to gather some default values
-	currDir, _ := os.Executable()
-	repoName := filepath.Base(filepath.Dir(currDir))
+	currDir, _ := os.Getwd()
+	repoName := filepath.Base(currDir)
 	currBranch, _ := exec.Command("git", "rev-parse", "--abbrev-ref", "HEAD").Output()
 	//branch and refs are different things, ado always need ref not just branch
 	currBranchRef := "refs/heads/" + strings.TrimSpace(string(currBranch))
@@ -91,15 +91,16 @@ func main() {
 
 	app.Flags = []cli.Flag{
 		&cli.StringFlag{
-			EnvVars: []string{"AZ_DEVOPS_TOKEN"},
-			Name:    "token, t",
-			Usage:   "Your azure devops token",
+			EnvVars:  []string{"AZ_DEVOPS_TOKEN"},
+			Name:     "token, t",
+			Usage:    "Your azure devops token",
+			Required: true,
 		},
 		&cli.StringFlag{
-			EnvVars: []string{"AZ_DEVOPS_URL"},
-			Name:    "az-url, g",
-			Usage:   "Base AZ_DEVOPS URL",
-			Value:   "https://dev.azure.com/kev0709",
+			EnvVars:  []string{"AZ_DEVOPS_URL"},
+			Name:     "az-url, g",
+			Usage:    "Base AZ_DEVOPS URL",
+			Required: true,
 		},
 	}
 

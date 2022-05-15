@@ -79,6 +79,9 @@ func GetAzureClient() func(c *cli.Context) error {
 	return func(c *cli.Context) error {
 		token := c.String("token")
 		azurl := c.String("az-url")
+		if token == "" || azurl == "" {
+			return cli.NewExitError("token and base url required", 1)
+		}
 		connection := azuredevops.NewPatConnection(azurl, token)
 		client, err := git.NewClient(c.Context, connection)
 
