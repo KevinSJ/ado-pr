@@ -94,8 +94,6 @@ func GetAzureClient() func(c *cli.Context) error {
 	}
 }
 
-
-
 //List prs for the repository
 func ListPrs() func(c *cli.Context) error {
 	return func(c *cli.Context) error {

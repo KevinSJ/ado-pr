@@ -77,13 +77,13 @@ func prCommands() []*cli.Command {
 
 func main() {
 	app := &cli.App{
-		Name: "az-pr",
-        Description: "A quick and easy way to list and create prs to Azure DevOps in CLI",
-        Authors: []*cli.Author{
-            {
-                Name: "Kevin Jiang",
-            },
-        },
+		Name:        "az-pr",
+		Description: "A quick and easy way to list and create prs to Azure DevOps in CLI",
+		Authors: []*cli.Author{
+			{
+				Name: "Kevin Jiang",
+			},
+		},
 	}
 
 	app.Before = internal.GetAzureClient()
