@@ -113,6 +113,7 @@ func ListPrs() func(c *cli.Context) error {
 		for _, v := range *repoDetails {
 			if *v.Name == repoName {
 				currRepo = &v
+				break
 			}
 		}
 
@@ -124,10 +125,10 @@ func ListPrs() func(c *cli.Context) error {
 			return cli.NewExitError("no repo found", -1)
 		}
 		includeLinks := true
+		repoId := currRepo.Id.String()
 
 		pullRequests, err := client.GetPullRequests(c.Context, git.GetPullRequestsArgs{
-			RepositoryId: currRepo.Name,
-			Project:      currRepo.Project.Name,
+			RepositoryId: &repoId,
 			SearchCriteria: &git.GitPullRequestSearchCriteria{
 				Status:       &git.PullRequestStatusValues.Active,
 				IncludeLinks: &includeLinks,
