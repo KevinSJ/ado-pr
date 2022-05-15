@@ -114,7 +114,9 @@ func ListPrs() func(c *cli.Context) error {
 		}
 
 		if currRepo == nil {
-			fmt.Printf("err: %v\n", err.Error())
+			if err != nil {
+				fmt.Printf("err: %v\n", err.Error())
+			}
 
 			return cli.NewExitError("no repo found", -1)
 		}

@@ -14,7 +14,7 @@ import (
 func prCommands() []*cli.Command {
 	//hacky way to gather some default values
 	currDir, _ := os.Executable()
-	repoName := filepath.Base(currDir)
+	repoName := filepath.Base(filepath.Dir(currDir))
 	currBranch, _ := exec.Command("git", "rev-parse", "--abbrev-ref", "HEAD").Output()
 	//branch and refs are different things, ado always need ref not just branch
 	currBranchRef := "refs/heads/" + strings.TrimSpace(string(currBranch))
@@ -77,7 +77,7 @@ func prCommands() []*cli.Command {
 
 func main() {
 	app := &cli.App{
-		Name:        "az-pr",
+		Name:        "ado-pr",
 		Description: "A quick and easy way to list and create prs to Azure DevOps in CLI",
 		Authors: []*cli.Author{
 			{
