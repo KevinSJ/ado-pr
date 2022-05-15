@@ -23,7 +23,7 @@ func prCommands() []*cli.Command {
 		{
 			Name:   "list",
 			Usage:  "List all current pr in current repo",
-			Action: internal.ListPr(),
+			Action: internal.ListPrs(),
 			Flags: []cli.Flag{
 				&cli.StringFlag{
 					Name:        "name, n",
