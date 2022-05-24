@@ -28,13 +28,17 @@ jobs:
         uses: actions/upload-artifact@main
         with:
            path: ./dist/*
+      - name: Release tag
+        id: tag
+        run: |
+          echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
       - name: Upload as release
         id: releas_upload
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: $(date +"%Y.%m.%d-%H%M")
+          tag_name: ${{ steps.tag.outputs.release_tag }}
           files: ./dist/*
 
       #- name: Upload build artifacts
