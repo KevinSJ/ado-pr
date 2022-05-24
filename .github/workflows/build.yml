@@ -30,6 +30,7 @@ jobs:
            path: ./dist/*
       - name: Upload as release
         id: releas_upload
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
