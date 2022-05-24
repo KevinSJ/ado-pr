@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/microsoft/azure-devops-go-api/azuredevops"
-	"github.com/microsoft/azure-devops-go-api/azuredevops/git"
+	"github.com/microsoft/azure-devops-go-api/azuredevops/v6"
+	"github.com/microsoft/azure-devops-go-api/azuredevops/v6/git"
 	"github.com/muesli/termenv"
 	"github.com/urfave/cli/v2"
 )

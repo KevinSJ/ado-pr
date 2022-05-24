@@ -3,7 +3,7 @@ module github.com/kevinsj/ado-pr
 go 1.18
 
 require (
-	github.com/microsoft/azure-devops-go-api/azuredevops v1.0.0-b5
+	github.com/microsoft/azure-devops-go-api/azuredevops/v6 v6.0.1
 	github.com/muesli/termenv v0.11.0
 	github.com/urfave/cli/v2 v2.6.0
 )
