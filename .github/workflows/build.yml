@@ -22,10 +22,14 @@ jobs:
             name: 'ado-pr'
             compress: 'false'
             dest: 'dist'
-
       - name: Upload build artifacts
-        uses: skx/github-action-publish-binaries@master
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/upload-artifact@main
         with:
-            args: ./dist/*
+           path: ./dist/*
+
+      #- name: Upload build artifacts
+        #uses: skx/github-action-publish-binaries@master
+        #env:
+            #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #with:
+            #args: ./dist/*
