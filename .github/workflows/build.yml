@@ -28,6 +28,13 @@ jobs:
         uses: actions/upload-artifact@main
         with:
            path: ./dist/*
+      - name: Upload as release
+        id: releas_upload
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: $(date +"%Y.%m.%d-%H%M")
+          files: ./dist/*
 
       #- name: Upload build artifacts
         #uses: skx/github-action-publish-binaries@master
